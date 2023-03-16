@@ -15,7 +15,14 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "cy:run": "cypress run",
+    "cy:open": "cypress open",
+    "cypress:run": "cypress run --headless",
+    "cleanup": "rm -rf cypress/reports",
+    "merge_reports": "mochawesome-merge cypress/reports/mochawesome-merge/*.json > output.json",
+    "mochawesome_report": "merge --reportDir cypress/reports/mochawesome-html-report -t Cypress_Test_Report -p Cypress_HTML_Report -f",
+    "cy:report": "npm run cleanup && npm run merge_reports && npm run mochawesome_report"
   },
   "eslintConfig": {
     "extends": [
@@ -34,5 +41,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "cypress": "^12.7.0",
+    "mochawesome-merge": "^4.3.0"
   }
 }
